@@ -1,7 +1,7 @@
 import pytchat
 import time
 
-chat = pytchat.create(video_id="uIx8l2xlYVY")
+chat = pytchat.create(video_id="nNKg8nHG9Fc")
 while chat.is_alive():
     print(chat.get().json())
     time.sleep(5)
