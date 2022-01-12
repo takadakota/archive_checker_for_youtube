@@ -34,8 +34,14 @@ while check_time_front < end_time:
             chat_time_repair = "00:0" + elapsedTime
             chat_time = datetime.datetime.strptime(chat_time_repair, '%H:%M:%S')
         elif len(elapsedTime) == 5:
-            chat_time_repair = "00:" + elapsedTime
-            chat_time = datetime.datetime.strptime(chat_time_repair, '%H:%M:%S')
+            # 待機枠のコメントは配信開始直前のものは-0:09みたいな感じで保存されてるぽいので、うまく処理する必要がある。
+            if "-" in elapsedTime:
+                elapsedTime.replace("-", "0")
+                chat_time_repair = "00:" + elapsedTime
+                chat_time = datetime.datetime.strptime(chat_time_repair, '%H:%M:%S')
+            else:
+                chat_time_repair = "00:" + elapsedTime
+                chat_time = datetime.datetime.strptime(chat_time_repair, '%H:%M:%S')
         elif len(elapsedTime) == 7:
             chat_time_repair = "0" + elapsedTime
             chat_time = datetime.datetime.strptime(chat_time_repair, '%H:%M:%S')
