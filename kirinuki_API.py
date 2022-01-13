@@ -55,4 +55,4 @@ while check_time_front < end_time:
             break
     if comment_count > 0:
         print("動画時間: " + str(check_time_front).split(" ")[1] + "〜" + str(check_time_back).split(" ")[1] + ", コメント数: " + str(comment_count))
-    print("コメント総数: " + str(len(comment_list)))
+print("コメント総数: " + str(len(comment_list)))
